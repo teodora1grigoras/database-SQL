@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #afa04c;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .content {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 500px;
+            text-align: center;
+            margin: 0 auto; /* Center the content horizontally */
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 150px; /* Set the maximum width of the logo */
+            margin-right: 20px; /* Adjust margin as needed */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Te-ai conectat cu succes la baza de date</h1>
+    </header>
+    <nav>
+        <a href="/meniu.html">Meniu</a>
+        <a href="/employees.html">Angajati</a>
+        <a href="/departamente.html">Departamente</a>
+        <a href="/products.html">Produse</a>
+        <a href="/materials.html">Materiale</a>
+        <a href="/comenzi.html">Comenzi</a>
+        <a href="/parteneri.html">Parteneri</a>
+        <a href="/produseexpediate.html">Expedieri</a>
+        <a href="/produseprimite.html">Primiri</a>
+        <a href="{{ url_for('add_employee') }}">Adaugă Angajat</a>
+    </nav>
+    <div class="content">
+        {% if results %}
+        <h2>Clientul care generează cele mai mari pierderi în raportul confecționare produs și vinderea lui</h2>
+        <li>NUME: {{results[0]}}</li>
+        <li>DATA EXPIRĂRII CONTRACTULUI: {{results[1]}}</li>
+        {% endif %}
+    </div>
+    <footer>
+        <p>© 2024 Fabrica Încaltaminte-Îmbracaminte. All rights reserved.</p>
+    </footer>
+</body>
+</html>

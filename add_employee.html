@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="login-container">
+    <h1>Adaugă Angajat</h1>
+    {% if success_message %}
+        <p style="color: green;">{{ success_message }}</p>
+        <nav>
+            <a href="/meniu.html">Întoarce-te la meniu</a>
+        </nav>
+    {% elif error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    <form class="login-form" action="{{ url_for('add_employee') }}" method="POST">
+
+        <div class="form-group">
+        <label for="nume">Nume:</label>
+        <input type="text" id="nume" name="nume" required>
+        </div>
+
+        <div class="form-group">
+        <label for="prenume">Prenume:</label>
+        <input type="text" id="prenume" name="prenume" required>
+        </div>
+
+        <div class="form-group">
+        <label for="CNP">CNP:</label>
+        <input type="text" id="CNP" name="CNP" required>
+        </div>
+
+        <div class="form-group">
+        <label for="departament">Departament:</label>
+        <input type="text" id="departament" name="departament" >
+        </div>
+
+        <div class="form-group">
+        <label for="telefon">Telefon:</label>
+        <input type="text" id="telefon" name="telefon" >
+        </div>
+
+        <div class="form-group">
+        <label for="mail">Mail:</label>
+        <input type="text" id="mail" name="mail" required>
+        </div>
+
+        <div class="form-group">
+        <label for="parola">Parola:</label>
+        <input type="password" id="parola" name="parola" required>
+        </div>
+
+        <div class="form-group">
+        <button type="submit">Adaugă Angajat</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

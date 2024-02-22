@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Information</title>
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #afa04c;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: center;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #afa04c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/meniu.html">Meniu</a>
+        <a href="/employees.html">Angajati</a>
+        <a href="/departamente.html">Departamente</a>
+        <a href="/products.html">Produse</a>
+        <a href="/materials.html">Materiale</a>
+        <a href="/comenzi.html">Comenzi</a>
+        <a href="/parteneri.html">Parteneri</a>
+        <a href="/produseexpediate.html">Expedieri</a>
+        <a href="/produseprimite.html">Primiri</a>
+        <a href="{{ url_for('add_employee') }}">Adaugă Angajat</a>
+    </nav>
+    <header>
+        <h1>Datele Partenerilor</h1>
+        <form action="{{ url_for('parteneri') }}" >
+            <!--<label for="search">Search:</label>-->
+            <input type="text" id="search" name="search" placeholder="nume">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+    <div class="content">
+        {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nume</th>
+                    <th>Tip Parteneriat</th>
+                    <th>Data expirarii contractului</th>
+                    <th>Telefon</th>
+                    <th>Adresa mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for parteneri in results %}
+                    <tr>
+                        <td>{{ parteneri[0] }}</td>
+                        <td>{{ parteneri[1] }}</td>
+                        <td>{{ parteneri[2] }}</td>
+                        <td>{{ parteneri[3] }}</td>
+                        <td>{{ parteneri[4] }}</td>                     
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>Niciun rezultat găsit.</p>
+        {% endif %}
+    </div>
+
+    
+    <footer>
+        <p>© 2024 Fabrica Încaltaminte-Îmbracaminte. All rights reserved.</p>
+    </footer>
+</body>
+</html>

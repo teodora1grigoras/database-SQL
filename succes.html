@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #afa04c;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+            flex: 1;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        {% if error %}
+        <h1>Eliminarea nu s-a putut efectua</h1>
+        {% elif success_message %}
+        <h1>Angajatul a fost eliminat cu succes din baza de date</h1>
+        {% endif%}
+    </header>
+    <nav>
+        <a href="/meniu.html">Meniu</a>
+        <a href="/employees.html">Angajati</a>
+        <a href="/departamente.html">Departamente</a>
+        <a href="/products.html">Produse</a>
+        <a href="/materials.html">Materiale</a>
+        <a href="/comenzi.html">Comenzi</a>
+        <a href="/parteneri.html">Parteneri</a>
+        <a href="/produseexpediate.html">Expedieri</a>
+        <a href="/produseprimite.html">Primiri</a>
+        <a href="{{ url_for('add_employee') }}">Adaugă Angajat</a>
+
+    </nav>
+    
+    <footer>
+        <p>© 2024 Fabrica Încaltaminte-Îmbracaminte. All rights reserved.</p>
+    </footer>
+</body>
+</html>
